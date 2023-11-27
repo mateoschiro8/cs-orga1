@@ -1,0 +1,55 @@
+
+Parcial ORGA1 - Programación en RISC-V
+
+1) Escribir la función dividir, que devuelve el resultado de dividir a a por b y sumar esto a accum. Si a o b son cero, devuelve cero, si b es negativo, también devuelve cero.
+
+Devuelve accum + a / b 
+
+Para resolver este ejercicio, implementé el siguiente pseudocódigo: 
+
+dividir(a, b) -> accum {
+	accum = 0
+	if(!(a == 0 || b <= 0)) {
+		if(a > 0) {
+			while(a >= b) {
+				a = a - b
+				accum++
+			}
+		} else {
+			while(a <= b) {
+				a = a + b
+				accum--
+			}
+		}
+	}
+	return acum
+}
+
+Primero realizo los chequeos, si alguno es igual a cero o si b es negativo. Despues, si a es positivo, simplemente voy contando cuantas veces puedo restarle b hasta que deje de ser mas grande. Si a es negativo, le voy sumando b pero restando en el acumulador (para que devuelva el resultado negativo)
+
+2) Escribir la función multiplicar, que devuelve el resultado de multiplicar a a por b y sumar esto a accum. Si a o b son cero, devuelve cero, si b es negativo, también devuelve cero.
+
+Devuelve accum + a * b 
+
+Para resolver este ejercicio, implementé el siguiente pseudocódigo: 
+
+multiplicar(a, b) -> accum {
+	accum = 0
+	if(!(a == 0 || b <= 0)) {
+		while(b > 0) {
+			accum = accum + a
+			b--
+		}
+	}
+	return acum
+}
+
+Primero realizo los chequeos, si alguno es igual a cero o si b es negativo. Despues, simplemente voy sumando a accum el valor de a y decrementando b. A diferencia del anterior, no necesito hacer distinción si a es positivo o negativo.
+
+3) Escribir la función numero par que devuelve 1 si a es par, 0 en caso contario.
+
+Para resolver este ejercicio, simplemente necesitaba mirar el ultimo bit en binario del numero, y ahí estaba la respuesta. Si el ultimo era 1, el numero era impar, y si era 0, el ultimo era par. Entonces, si hago un and del numero con 0x1, el resultado va a ser 0x0 si es par, y 0x1 si es impar. Entonces simplemente le puedo sumar uno al numero que venia de entrada, hago el and y devuelvo eso. 
+
+4) Escribir la función numero impar que devuelve 1 si a es impar, 0 en caso contario.
+
+Con este hice lo mismo que el anterior pero sin sumarle uno.
